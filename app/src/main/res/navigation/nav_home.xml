@@ -6,12 +6,12 @@
     app:startDestination="@id/homeFragment">
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.jaroidx.navigation.MainActivity"
+        android:name="com.jaroidx.navigation.ui.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.jaroidx.navigation.HomeFragment"
+        android:name="com.jaroidx.navigation.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -45,22 +45,22 @@
     </fragment>
     <fragment
         android:id="@+id/wishFragment"
-        android:name="com.jaroidx.navigation.WishFragment"
+        android:name="com.jaroidx.navigation.ui.WishFragment"
         android:label="fragment_wish"
         tools:layout="@layout/fragment_wish" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.jaroidx.navigation.CartFragment"
+        android:name="com.jaroidx.navigation.ui.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.jaroidx.navigation.AccountFragment"
+        android:name="com.jaroidx.navigation.ui.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.jaroidx.navigation.CategoriesFragment"
+        android:name="com.jaroidx.navigation.ui.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" />
 </navigation>
