@@ -12,4 +12,8 @@ object BindingAdapter {
             Glide.with(this).load(it).into(this)
         }
     }
+
+    fun Boolean.reverse():Boolean{
+        return !this
+    }
 }

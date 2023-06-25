@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import type="com.jaroidx.navigation.utils.StringUtils" />
+
         <variable
             name="product"
             type="com.jaroidx.navigation.models.Product" />
@@ -17,8 +19,8 @@
         android:elevation="@dimen/_1sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_250sdp"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_200sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:background="@drawable/bg_product"
             android:elevation="@dimen/_5sdp"
@@ -36,8 +38,11 @@
                 android:id="@+id/imgProduct"
                 loadImage="@{product.thumbnail}"
                 android:layout_width="0dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_height="0dp"
-                android:padding="@dimen/_10sdp"
+                android:adjustViewBounds="true"
                 android:src="@drawable/ic_launcher_background"
                 app:layout_constraintBottom_toTopOf="@id/h1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,10 +67,10 @@
 
             <ImageView
                 android:id="@+id/imgWishList"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:src="@drawable/ic_wishlist_unselected"
+                android:src="@{product.wishlist?@drawable/ic_wishlist_selected:@drawable/ic_wishlist_unselected}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tvProductName" />
 
@@ -94,6 +99,7 @@
 
             <TextView
                 android:id="@+id/tvRating"
+                android:layout_marginLeft="@dimen/_3sdp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_regular"

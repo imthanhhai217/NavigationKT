@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.jaroidx.navigation.R
 import com.jaroidx.navigation.adapters.ListProductAdapter
 import com.jaroidx.navigation.api.`object`.BaseResponse
 import com.jaroidx.navigation.databinding.FragmentHomeBinding
 import com.jaroidx.navigation.models.ListProductResponse
 import com.jaroidx.navigation.ui.home.HomeViewModel
+import com.jaroidx.navigation.utils.BindingAdapter.reverse
 
 class HomeFragment : Fragment() {
 
@@ -47,8 +48,8 @@ class HomeFragment : Fragment() {
             when (it) {
                 is BaseResponse.Success -> {
                     hideLoading()
-                    it.data?.let { listProduct ->
-                        bindData(listProduct)
+                    it.data?.let { listProductResponse ->
+                        bindData(listProductResponse)
                     }
                 }
 
@@ -67,10 +68,28 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
-        listProductAdapter = ListProductAdapter()
+        listProductAdapter = ListProductAdapter(iClickItemListener)
         binding.rvListProduct.apply {
             adapter = listProductAdapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 2)
+        }
+    }
+
+    private val iClickItemListener = object : ListProductAdapter.IClickItemListener {
+        override fun changeWishStateListener(pos: Int) {
+            val product = listProductAdapter.differ.currentList[pos]
+            listProductAdapter.differ.currentList[pos].wishlist = product.wishlist.reverse()
+            listProductAdapter.differ.submitList(listProductAdapter.differ.currentList)
+            listProductAdapter.notifyItemChanged(pos,product)
+            if (product.wishlist){
+                (activity as MainActivity).wishListViewModel.upsertWish(product)
+            }else{
+                (activity as MainActivity).wishListViewModel.deleteWish(product)
+            }
+        }
+
+        override fun showDetailsListener(pos: Int) {
+
         }
     }
 
