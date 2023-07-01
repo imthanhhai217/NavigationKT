@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "17183188601",
+    "project_id": "navigationkt",
+    "storage_bucket": "navigationkt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17183188601:android:37301ce73845c0950fd6a8",
+        "android_client_info": {
+          "package_name": "com.jaroidx.navigation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17183188601-3on2guo396upd7aru36qfv8898bpb3lj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaroidx.navigation",
+            "certificate_hash": "8e297866e14807e9745ca6b41dee9e2f52dfa4fd"
+          }
+        },
+        {
+          "client_id": "17183188601-48bdcjmeerpn00miqjv7b14g2i3snv7f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDREM8DTduJCN47d07LLOItGpLss6ieDsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17183188601-48bdcjmeerpn00miqjv7b14g2i3snv7f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
