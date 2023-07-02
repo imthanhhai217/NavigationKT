@@ -16,26 +16,39 @@ import com.google.firebase.ktx.Firebase
 import com.jaroidx.navigation.R
 
 class AccountViewModel(private val application: Application) : AndroidViewModel(application) {
-    private var auth = Firebase.auth
+    private var auth: FirebaseAuth = Firebase.auth
     private var currentUser = MutableLiveData<FirebaseUser?>()
     var _currentUser: MutableLiveData<FirebaseUser?> = currentUser
-    val signInRequest = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken(application.getString(R.string.web_client_id)).requestEmail().build()
-    val signInClient = GoogleSignIn.getClient(application, signInRequest)
+    private val signInRequest = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        .requestIdToken(application.getString(R.string.web_client_id))
+        .requestEmail().build()
+    private val signInClient = GoogleSignIn.getClient(application, signInRequest)
     lateinit var callback: OnSignInStartedListener
 
     init {
         currentUser.value = auth.currentUser
     }
 
+    fun signUpWithEmailAndPassword(userName:String, passwords:String){
+        auth.signInWithEmailAndPassword(userName,passwords).addOnSuccessListener {
+            if (it != null){
+                currentUser.value = it.user
+            }else{
+                currentUser.value = null
+            }
+        }.addOnFailureListener {
+            Log.d("TAG", "signUpWithEmailAndPassword: ${it.message}")
+        }
+    }
+
     fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null);
         auth.signInWithCredential(credential).addOnSuccessListener {
             if (it != null) {
-                _currentUser.value = auth.currentUser
+                currentUser.value = auth.currentUser
                 Toast.makeText(application, "SignInSuccess", Toast.LENGTH_SHORT).show()
             } else {
-                _currentUser.value = null
+                currentUser.value = null
             }
         }.addOnFailureListener {
             Log.d("TAG", "firebaseAuthWithGoogle: ${it.message}")

@@ -7,16 +7,16 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Product(
-    @SerializedName("brand") val brand: String,
-    @SerializedName("category") val category: String,
-    @SerializedName("description") val description: String,
-    @SerializedName("discountPercentage") val discountPercentage: Double,
-    @SerializedName("id") @PrimaryKey val id: Int,
-    @SerializedName("images") val images: List<String>,
-    @SerializedName("price") val price: Int,
-    @SerializedName("rating") val rating: Double,
-    @SerializedName("stock") val stock: Int,
-    @SerializedName("thumbnail") val thumbnail: String,
-    @SerializedName("title") val title: String,
+    @SerializedName("brand") var brand: String = "",
+    @SerializedName("category") var category: String = "",
+    @SerializedName("description") var description: String = "",
+    @SerializedName("discountPercentage") var discountPercentage: Double = 0.0,
+    @SerializedName("id") @PrimaryKey var id: Int = 0,
+    @SerializedName("images") var images: List<String>? = null,
+    @SerializedName("price") var price: Int = 0,
+    @SerializedName("rating") var rating: Double = 0.0,
+    @SerializedName("stock") var stock: Int = 0,
+    @SerializedName("thumbnail") var thumbnail: String = "",
+    @SerializedName("title") var title: String = "",
     var wishlist: Boolean = false
 )

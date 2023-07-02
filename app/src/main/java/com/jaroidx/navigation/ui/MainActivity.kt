@@ -1,34 +1,31 @@
 package com.jaroidx.navigation.ui
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.result.ActivityResultCallback
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.common.api.ApiException
 import com.jaroidx.navigation.R
 import com.jaroidx.navigation.database.wishlist.WishListDatabase
 import com.jaroidx.navigation.databinding.ActivityMainBinding
+import com.jaroidx.navigation.repositories.CategoriesRepository
 import com.jaroidx.navigation.repositories.ListProductRepository
 import com.jaroidx.navigation.repositories.WishListRepository
 import com.jaroidx.navigation.ui.account.AccountViewModel
 import com.jaroidx.navigation.ui.account.AccountViewModelFactory
+import com.jaroidx.navigation.ui.category.CategoriesViewModel
+import com.jaroidx.navigation.ui.category.CategoriesViewModelFactory
 import com.jaroidx.navigation.ui.home.HomeViewModel
 import com.jaroidx.navigation.ui.home.HomeViewModelFactory
 import com.jaroidx.navigation.ui.wishlist.WishListViewModeFactory
 import com.jaroidx.navigation.ui.wishlist.WishListViewModel
 
 class MainActivity : AppCompatActivity() {
-    private val TAG = "MainActivity"
     lateinit var homeViewModel: HomeViewModel
     lateinit var wishListViewModel: WishListViewModel
     lateinit var accountViewModel: AccountViewModel
+    lateinit var categoriesViewModel: CategoriesViewModel
     override fun onStart() {
         super.onStart()
     }
@@ -52,6 +49,14 @@ class MainActivity : AppCompatActivity() {
         initHomeViewModel()
         initWishViewModel()
         initAccountViewModel()
+        initCategoriesViewModel()
+    }
+
+    private fun initCategoriesViewModel() {
+        val categoriesRepository = CategoriesRepository()
+        val categoriesViewModelFactory = CategoriesViewModelFactory(categoriesRepository,application)
+        categoriesViewModel =
+            ViewModelProvider(this, categoriesViewModelFactory)[CategoriesViewModel::class.java]
     }
 
     private fun initAccountViewModel() {
@@ -59,6 +64,7 @@ class MainActivity : AppCompatActivity() {
         accountViewModel =
             ViewModelProvider(this, accountViewModelFactory)[AccountViewModel::class.java]
     }
+
     private fun initWishViewModel() {
         val wishListDatabase = WishListDatabase(this)
         val wishListRepository = WishListRepository(wishListDatabase)
