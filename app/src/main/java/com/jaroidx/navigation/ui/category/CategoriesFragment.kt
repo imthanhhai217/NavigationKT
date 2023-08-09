@@ -1,4 +1,4 @@
-package com.jaroidx.navigation.ui
+package com.jaroidx.navigation.ui.category
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.jaroidx.navigation.R
 import com.jaroidx.navigation.api.`object`.BaseResponse
 import com.jaroidx.navigation.databinding.FragmentCategoriesBinding
 import com.jaroidx.navigation.models.CategoriesResponse
-import com.jaroidx.navigation.ui.category.CategoriesViewModel
+import com.jaroidx.navigation.ui.MainActivity
 
 class CategoriesFragment : Fragment() {
 

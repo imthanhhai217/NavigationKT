@@ -15,4 +15,5 @@
     <color name="cyan">#64B5F6</color>
     <color name="yellow">#DCE775</color>
     <color name="purple">#BA68C8</color>
+    <color name="behind_color_dialog">#809F9F9F</color>
 </resources>

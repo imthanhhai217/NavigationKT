@@ -1,4 +1,4 @@
-package com.jaroidx.navigation.ui
+package com.jaroidx.navigation.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import com.jaroidx.navigation.adapters.ListProductAdapter
 import com.jaroidx.navigation.api.`object`.BaseResponse
 import com.jaroidx.navigation.databinding.FragmentHomeBinding
 import com.jaroidx.navigation.models.ListProductResponse
-import com.jaroidx.navigation.ui.home.HomeViewModel
+import com.jaroidx.navigation.ui.MainActivity
 import com.jaroidx.navigation.utils.BindingAdapter.reverse
 
 class HomeFragment : Fragment() {

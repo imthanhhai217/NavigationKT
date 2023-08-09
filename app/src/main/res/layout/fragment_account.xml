@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -15,26 +16,67 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/purple"
-        tools:context=".ui.AccountFragment">
+        tools:context=".ui.account.AccountFragment">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+            android:layout_height="match_parent">
 
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/btnSignInGoogle"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="@{user != null?View.GONE:View.VISIBLE}" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/btnSignOut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Logout"
-                android:visibility="@{user != null?View.VISIBLE:View.GONE}" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/imgMessage"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:src="@drawable/ic_message"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/tvCountMessageUnread"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:autoSizeMaxTextSize="@dimen/_15ssp"
+                    android:autoSizeMinTextSize="@dimen/_5ssp"
+                    android:autoSizeStepGranularity="@dimen/_2ssp"
+                    android:autoSizeTextType="uniform"
+                    android:background="@drawable/bg_message_count"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="1000"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/imgMessage"
+                    app:layout_constraintEnd_toEndOf="@id/imgMessage"
+                    app:layout_constraintStart_toEndOf="@id/imgMessage"
+                    app:layout_constraintTop_toTopOf="@id/imgMessage" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/btnSignInGoogle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{user != null?View.GONE:View.VISIBLE}" />
+
+                <Button
+                    android:id="@+id/btnSignOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Logout"
+                    android:visibility="@{user != null?View.VISIBLE:View.GONE}" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

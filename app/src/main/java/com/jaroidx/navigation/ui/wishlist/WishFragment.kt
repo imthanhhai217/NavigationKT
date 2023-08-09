@@ -1,4 +1,4 @@
-package com.jaroidx.navigation.ui
+package com.jaroidx.navigation.ui.wishlist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,7 @@ import com.jaroidx.navigation.adapters.ListProductAdapter
 import com.jaroidx.navigation.database.wishlist.WishListDatabase
 import com.jaroidx.navigation.databinding.FragmentWishBinding
 import com.jaroidx.navigation.models.Product
-import com.jaroidx.navigation.ui.wishlist.WishListViewModel
-import com.jaroidx.navigation.utils.BindingAdapter.reverse
+import com.jaroidx.navigation.ui.MainActivity
 
 class WishFragment : Fragment() {
     private val TAG = "WishFragment"

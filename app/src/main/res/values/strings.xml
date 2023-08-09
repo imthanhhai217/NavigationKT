@@ -3,4 +3,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="web_client_id">17183188601-8olrh0rtqajnb9e3gaq0v7v01nei95a5.apps.googleusercontent.com</string>
+    <string name="nav_notification_channel_id">2107</string>
+    <string name="nav_notification_name">Nav_KT</string>
+    <string name="nav_notification_des">This is chanel of navigation KT</string>
+    <string name="open_drawer">Open</string>
+    <string name="close_drawer">Close</string>
 </resources>

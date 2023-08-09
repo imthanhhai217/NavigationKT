@@ -1,6 +1,7 @@
-package com.jaroidx.navigation.ui
+package com.jaroidx.navigation.ui.account
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,10 +17,12 @@ import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseUser
 import com.jaroidx.navigation.R
 import com.jaroidx.navigation.databinding.FragmentAccountBinding
-import com.jaroidx.navigation.ui.account.AccountViewModel
+import com.jaroidx.navigation.ui.MainActivity
+import com.jaroidx.navigation.utils.PermissionHelper
 
 class AccountFragment : Fragment() {
 
+    private val TAG = "AccountFragment"
     private lateinit var binding: FragmentAccountBinding
     private lateinit var accountViewModel: AccountViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +54,25 @@ class AccountFragment : Fragment() {
         binding.btnSignOut.setOnClickListener(View.OnClickListener {
             accountViewModel.logout()
         })
+
+        binding.clMessage.setOnClickListener {
+            PermissionHelper.requestPermission(
+                activity as MainActivity,
+                requestPermissionResultLauncher,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            )
+        }
     }
+
+    private val requestPermissionResultLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission(),
+            ActivityResultCallback { isGrand ->
+                if (isGrand) {
+                    Log.d(TAG, "Permission granted!")
+                } else {
+                    Log.d(TAG, "Permission denied!")
+                }
+            })
 
 
     private val onSignInStartedListener = object : AccountViewModel.OnSignInStartedListener {
